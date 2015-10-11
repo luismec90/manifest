@@ -10,7 +10,7 @@
         */
         body, html {
             height: 100%;
-           background-color:#fff;
+            background-color: #fff;
         }
 
         .card-container.card {
@@ -169,6 +169,5 @@
         <a href="#" class="forgot-password">
             ¿Olvidaste tu contraseña?
         </a>
-    </div><!-- /card-container -
-
+    </div>
 @stop

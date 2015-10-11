@@ -8,7 +8,6 @@
         <thead>
         <tr class="bg-info">
             <th>Código</th>
-            <th>Código</th>
             <th>Provedor</th>
             <th colspan="2">Opciones</th>
         </tr>

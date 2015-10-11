@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateManifestsTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateManifestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('manifests', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id')->unsigned()->index();
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->string('code');
-            $table->string('supplier');
+            $table->integer('manifest_id')->unsigned()->index();
+            $table->foreign('manifest_id')->references('id')->on('manifests')->onDelete('cascade');
+            $table->string('reference');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateManifestsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('manifests');
+        Schema::drop('products');
     }
 }
