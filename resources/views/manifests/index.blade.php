@@ -7,7 +7,7 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr class="bg-info">
-            <th>Código</th>
+            <th>C&oacute;digo</th>
             <th>Provedor</th>
             <th colspan="2">Opciones</th>
         </tr>

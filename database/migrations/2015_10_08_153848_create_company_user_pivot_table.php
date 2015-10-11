@@ -19,6 +19,7 @@ class CreateCompanyUserPivotTable  extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->smallInteger('role'); //1 Admin, 2 Colaborador
+            $table->timestamps();
         });
     }
 

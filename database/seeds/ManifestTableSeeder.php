@@ -11,6 +11,6 @@ class ManifestTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory('App\Manifest', 100)->create();
     }
 }

@@ -155,19 +155,19 @@
         <form method="POST" action="/entrar" class="form-signin">
             {!! csrf_field() !!}
             <span id="reauth-email" class="reauth-email"></span>
-            <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required autofocus>
-            <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+            <input type="email" name="email" class="form-control" placeholder="Correo electr&oacute;nico" required autofocus>
+            <input type="password" name="password" class="form-control" placeholder="Contrase&ntilde;a" required>
 
             <div id="remember" class="checkbox">
                 <label>
                     <input type="checkbox" value="remember-me"> Recordar mi cuenta
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar sesión</button>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar sesi&oacute;n</button>
         </form>
         <!-- /form -->
         <a href="#" class="forgot-password">
-            ¿Olvidaste tu contraseña?
+            &iquest;Olvidaste tu contrase&ntilde;a?
         </a>
     </div>
 @stop
