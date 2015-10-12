@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder
             //   DB::table($table)->truncate();
         }
 
-        $this->call(UserTableSeeder::class);
+
         $this->call(CompanyTableSeeder::class);
-        $this->call(CompanyUserTableSeeder::class);
+        $this->call(UserTableSeeder::class);
         $this->call(ManifestTableSeeder::class);
         $this->call(ProductTableSeeder::class);
 

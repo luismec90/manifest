@@ -19,6 +19,10 @@
 
 @section('content')
     <h1>Crear manifiesto</h1>
+
+    @include('partials.errors')
+
+
     {!! Form::open(['url' => 'manifests']) !!}
 
     <div class="form-group">

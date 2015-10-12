@@ -15,10 +15,11 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 
     @section('css')
     @show
-
 
             <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,11 +49,7 @@
         <!--//navbar-header-->
         <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active nav-item"><a href="index.html">Inicio</a></li>
-
-
-
-                <li class="nav-item"><a href="contact.html">Contacto</a></li>
+                <li class="active nav-item"><a href="/">Inicio</a></li>
 
             </ul>
 
@@ -84,7 +81,25 @@
 
 <!-- Page Content -->
 <div id="main-container" class="container">
+    @if(Auth::check())
+        <hr>
+        <div class="row">
+            <div class="col-xs-12">
+                {!! Form::open(['url' => '/manifests','method'=>'GET']) !!}
+                <div class="input-group">
+                    <input type="text" class="form-control input-lg" value="{{ Request::get('s') }}" placeholder="Buscar" name="s">
 
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" type="submit"><i
+                                    class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <hr>
+    @endif
     @yield('content')
 
 </div>
@@ -116,14 +131,14 @@
     <!--//bottom-bar-->
 </footer>
 
-<!-- jQuery Version 1.11.1 -->
 <script src="/js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
 <script src="/js/bootstrap.min.js"></script>
+<script src="/libs/bootstrap-notify/bootstrap-notify.min.js"></script>
 
 @section('js')
 @show
+
+@include('partials.notify')
 
 </body>
 

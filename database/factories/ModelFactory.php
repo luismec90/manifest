@@ -13,6 +13,7 @@
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
+        'company_id' => 1,
         'name' => $faker->name,
         'email' => $faker->email,
         'password' => bcrypt(str_random(10)),

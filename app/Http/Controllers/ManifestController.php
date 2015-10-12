@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Manifest;
-use Illuminate\Http\Request;
+use App\Product;
+use Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Validator;
+use Laracasts\Flash\Flash;
+use Redirect;
+use Session;
+use Auth;
+
 
 class ManifestController extends Controller
 {
@@ -16,8 +23,16 @@ class ManifestController extends Controller
      */
     public function index()
     {
-        $manifests = Manifest::all();
+        if (Request::get('s') !== '') {
+            $s = Request::get('s');
+            $manifests = Manifest::whereHas('products', function ($q) use ($s) {
+                $q->where('products.reference', 'like', "%$s%");
+            })->paginate(15);
+        } else
+            $manifests = Manifest::paginate(15);
+
         return view('manifests.index', compact('manifests'));
+
     }
 
     /**
@@ -27,6 +42,7 @@ class ManifestController extends Controller
      */
     public function create()
     {
+
         return view('manifests.create');
     }
 
@@ -38,7 +54,30 @@ class ManifestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = Validator::make($request->all(), Manifest::$rules);
+
+        if ($validation->fails())
+            return Redirect::back()->withInput()->withErrors($validation);
+
+        $manifest = new Manifest;
+        $manifest->company_id = Auth::user()->company_id;
+        $manifest->code = $request->get('code');
+        $manifest->supplier = $request->get('supplier');
+        $manifest->save();
+
+        $products = explode(" ", $request->get('products'));
+
+        foreach ($products as $row) {
+            $product = new Product;
+            $product->company_id = Auth::user()->company_id;
+            $product->manifest_id = $manifest->id;
+            $product->reference = $row;
+            $product->save();
+        }
+
+        Flash::success('Manifiesto creado exitosamente');
+
+        return Redirect::back();
     }
 
     /**

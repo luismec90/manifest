@@ -15,7 +15,7 @@ body {
 }
 
 body {
-    font-size: 13px;
+    font-size: 14px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -50,7 +50,7 @@ h6 {
 
 x fol p {
     color: #444444;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 a {
@@ -211,7 +211,7 @@ blockquote p {
     -moz-transition: all 0.4s ease-in-out;
     -ms-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
-    font-size: 13px;
+    font-size: 14px;
     display: block;
 }
 
@@ -288,14 +288,14 @@ ul.custom-list-style li {
     width: 40px;
     height: 50px;
     text-align: center;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .date-label .month {
     background: #6091ba;
     color: #fff;
     display: block;
-    font-size: 13px;
+    font-size: 14px;
     text-transform: uppercase;
 }
 
@@ -353,7 +353,7 @@ ul.custom-list-style li {
 }
 
 .nav > li > a {
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .nav > li > a:focus,
@@ -475,7 +475,7 @@ ul.custom-list-style li {
 }
 
 .panel-group .panel .panel-body {
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .panel {
@@ -2045,7 +2045,7 @@ ul.custom-list-style li {
 }
 
 .courses-wrapper .course-list-header {
-    font-size: 13px;
+    font-size: 14px;
     margin-bottom: 15px;
 }
 
@@ -2237,7 +2237,7 @@ ul.custom-list-style li {
     }
 
     .flexslider .slides .flex-caption .main {
-        font-size: 13px;
+        font-size: 14px;
         display: block;
         margin-bottom: 0;
     }
@@ -2419,7 +2419,7 @@ ul.custom-list-style li {
     }
 
     body {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .wrapper {

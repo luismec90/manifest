@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -14,10 +15,10 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $manifests = Manifest::all();
-            return view('manifests.index', compact('manifests'));
+            return Redirect::to('/manifests');
         }
 
         return view('pages.home');
     }
+
 }
