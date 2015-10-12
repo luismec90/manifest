@@ -142,6 +142,12 @@
         .forgot-password:focus {
             color: rgb(12, 97, 33);
         }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 @stop
 

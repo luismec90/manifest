@@ -18,7 +18,7 @@ class HomeController extends Controller
             return Redirect::to('/manifests');
         }
 
-        return view('pages.home');
+        return Redirect::to('/entrar');
     }
 
 }

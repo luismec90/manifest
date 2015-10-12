@@ -113,14 +113,15 @@
                 <small class="copyright col-md-6 col-sm-12 col-xs-12">Copyright @ 2015 <a href="#">http://www.manifiestos.co/</a>
                 </small>
                 <ul class="social pull-right col-md-6 col-sm-12 col-xs-12">
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                 <!--
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                     <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
                     <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                    <li class="row-end"><a href="#"><i class="fa fa-rss"></i></a></li>
+                    <li class="row-end"><a href="#"><i class="fa fa-rss"></i></a></li> -->
                 </ul>
                 <!--//social-->
             </div>
