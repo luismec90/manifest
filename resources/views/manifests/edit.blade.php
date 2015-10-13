@@ -19,26 +19,26 @@
 
 @section('content')
     <h1><a class="btn btn-primary" title="Ir atr&aacute;s" href="{{ route('manifests.index') }}"><i
-                    class="fa fa-reply"></i></a> Crear manifiesto</h1>
+                    class="fa fa-reply"></i></a> Editar manifiesto</h1>
 
     @include('partials.errors')
 
 
-    {!! Form::open(['url' => 'manifests','class'=>'validate-form']) !!}
+    {!! Form::open(['route' => ['manifests.update',$manifest->id],'method'=>'PUT','class'=>'validate-form']) !!}
 
     <div class="form-group">
         {!! Form::label('code', 'Codigo:') !!}
-        {!! Form::text('code',null,['class'=>'form-control','required'=>'true']) !!}
+        {!! Form::text('code',$manifest->code,['class'=>'form-control','required'=>'true']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('supplier', 'Nombre del provedor:') !!}
-        {!! Form::text('supplier',null,['class'=>'form-control','required'=>'true']) !!}
+        {!! Form::text('supplier',$manifest->supplier,['class'=>'form-control','required'=>'true']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('products', 'Productos:') !!}
-        {!! Form::text('products',null,['class'=>'form-control input-lg','required'=>'true']) !!}
+        {!! Form::text('products', implode(" ",$manifest->products->lists('reference')->all()),['class'=>'form-control input-lg','required'=>'true']) !!}
     </div>
     <br>
     <div class="form-group ">

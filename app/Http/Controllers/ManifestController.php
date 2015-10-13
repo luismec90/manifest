@@ -52,20 +52,20 @@ class ManifestController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $validation = Validator::make($request->all(), Manifest::$rules);
+        $validation = Validator::make(Request::all(), Manifest::$rules);
 
         if ($validation->fails())
             return Redirect::back()->withInput()->withErrors($validation);
 
         $manifest = new Manifest;
         $manifest->company_id = Auth::user()->company_id;
-        $manifest->code = $request->get('code');
-        $manifest->supplier = $request->get('supplier');
+        $manifest->code = Request::get('code');
+        $manifest->supplier = Request::get('supplier');
         $manifest->save();
 
-        $products = explode(" ", $request->get('products'));
+        $products = explode(" ", Request::get('products'));
 
         foreach ($products as $row) {
             $product = new Product;
@@ -88,7 +88,7 @@ class ManifestController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -97,9 +97,13 @@ class ManifestController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($manifestID)
     {
-        //
+        $manifest = Manifest::with('products')
+            ->findOrFail($manifestID);
+
+
+        return view('manifests.edit', compact('manifest'));
     }
 
     /**
@@ -109,9 +113,36 @@ class ManifestController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($manifestID)
     {
-        //
+        $validation = Validator::make(Request::all(), Manifest::$rules);
+
+        if ($validation->fails())
+            return Redirect::back()->withInput()->withErrors($validation);
+
+        $manifest = Manifest::with('products')
+            ->where('company_id', Auth::user()->company_id)
+            ->findOrFail($manifestID);
+
+        $manifest->code = Request::get('code');
+        $manifest->supplier = Request::get('supplier');
+        $manifest->save();
+
+        $manifest->products()->delete();
+
+        $products = explode(" ", Request::get('products'));
+
+        foreach ($products as $row) {
+            $product = new Product;
+            $product->company_id = Auth::user()->company_id;
+            $product->manifest_id = $manifest->id;
+            $product->reference = $row;
+            $product->save();
+        }
+
+        Flash::success('Manifiesto editado exitosamente');
+
+        return Redirect::back();
     }
 
     /**
@@ -120,8 +151,16 @@ class ManifestController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($manifestID)
     {
-        //
+        $manifest = Manifest::with('products')
+            ->where('company_id', Auth::user()->company_id)
+            ->findOrFail($manifestID);
+
+        $manifest->delete();
+
+        Flash::success('Manifiesto eliminado exitosamente');
+
+        return Redirect::back();
     }
 }
