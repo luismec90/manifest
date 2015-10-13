@@ -1,3 +1,10 @@
+$(function(){
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+    })
+});
+
+
 $('form.validate-form').submit(function () {
 
     var invalidForm = false;

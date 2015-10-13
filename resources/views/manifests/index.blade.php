@@ -9,6 +9,7 @@
                 $("#form-delete-manifest").attr("action", $(this).data("action"));
                 $("#modal-delete-manifest").modal('show');
             });
+
         });
 
     </script>

@@ -16,6 +16,8 @@
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
     <link href="/css/app.css" rel="stylesheet">
 
     @section('css')
@@ -84,20 +86,27 @@
     @if(Auth::check())
         <hr>
         <div class="row">
-            <div class="col-xs-12">
-                {!! Form::open(['url' => '/manifests','method'=>'GET']) !!}
-                <div class="input-group">
-                    <input type="text" class="form-control input-lg" value="{{ Request::get('s') }}"
-                           placeholder="Buscar" name="s">
+            {!! Form::open(['url' => '/manifests','method'=>'GET','class'=>'validate-form']) !!}
+            <div class="col-xs-6">
+                <input type="text" class="form-control input-lg" value="{{ Request::get('s') }}"
+                       placeholder="Buscar por referencia ..." name="s">
 
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary btn-lg" type="submit"><i
-                                    class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </div>
-                </div>
-                </form>
             </div>
+            <div class="col-xs-4">
+                <input type="text" class="form-control input-lg datepicker" value="{{ Request::get('d') }}"
+                       placeholder="Buscar por fecha ..." name="d">
+            </div>
+            <div class="col-xs-1">
+                <button class="btn btn-primary btn-lg btn-block" type="submit" title="Buscar"><i
+                            class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+            <div class="col-xs-1">
+                <a  href="{{ route("manifests.index") }}" class="btn btn-default btn-lg btn-block" title="Reinicar b&uacte;squeda"><i
+                            class="glyphicon glyphicon-refresh"></i>
+                </a>
+            </div>
+            </form>
         </div>
         <hr>
     @endif
@@ -136,6 +145,7 @@
 <script src="/js/jquery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/libs/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <script src="/js/main.js"></script>
 
 @section('js')
