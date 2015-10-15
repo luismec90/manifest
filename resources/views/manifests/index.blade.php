@@ -28,8 +28,8 @@
             <th>C&oacute;digo</th>
             <th>Provedor</th>
             <th class="col-xs-6">Productos</th>
-            <th>Fecha de creaci&oacute;n</th>
-            <th colspan="2">Opciones</th>
+            <th class="col-xs-1">Fecha de creaci&oacute;n</th>
+            <th  class="col-xs-1" colspan="2">Opciones</th>
         </tr>
         </thead>
         <tbody>
