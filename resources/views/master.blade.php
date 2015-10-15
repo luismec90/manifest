@@ -87,15 +87,16 @@
         <hr>
         <div class="row">
             {!! Form::open(['url' => '/manifests','method'=>'GET','class'=>'validate-form']) !!}
-            <div class="col-xs-6">
+            <div class="col-xs-10">
                 <input type="text" class="form-control input-lg" value="{{ Request::get('s') }}"
-                       placeholder="Buscar por referencia ..." name="s">
+                       placeholder="Buscar manifiestos por referencia ..." name="s">
 
             </div>
+            <!--
             <div class="col-xs-4">
                 <input type="text" class="form-control input-lg datepicker" value="{{ Request::get('d') }}"
                        placeholder="Buscar por fecha ..." name="d">
-            </div>
+            </div>-->
             <div class="col-xs-1">
                 <button class="btn btn-primary btn-lg btn-block" type="submit" title="Buscar"><i
                             class="glyphicon glyphicon-search"></i>

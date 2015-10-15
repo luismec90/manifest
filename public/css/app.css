@@ -48,3 +48,8 @@
     border-color: #d15b47;
     color: #ffffff;
 }
+
+#main-container {
+    min-height: calc(100% - 156px);
+    margin-top: 20px;
+}

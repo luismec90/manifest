@@ -133,21 +133,6 @@
             background-color: rgb(12, 97, 33);
         }
 
-        .forgot-password {
-            color: rgb(104, 145, 162);
-        }
-
-        .forgot-password:hover,
-        .forgot-password:active,
-        .forgot-password:focus {
-            color: rgb(12, 97, 33);
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
     </style>
 @stop
 
