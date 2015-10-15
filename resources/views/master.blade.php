@@ -105,7 +105,7 @@
             </div>
             <div class="col-xs-1">
                 <a href="{{ route("manifests.index") }}" class="btn btn-default btn-lg btn-block"
-                   title="Reinicar b&uacte;squeda"><i
+                   title="Reinicar b&uacute;squeda"><i
                             class="glyphicon glyphicon-refresh"></i>
                 </a>
             </div>
