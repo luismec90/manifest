@@ -16,7 +16,8 @@
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker.min.css"
+          rel="stylesheet">
 
     <link href="/css/app.css" rel="stylesheet">
 
@@ -103,7 +104,8 @@
                 </button>
             </div>
             <div class="col-xs-1">
-                <a  href="{{ route("manifests.index") }}" class="btn btn-default btn-lg btn-block" title="Reinicar b&uacte;squeda"><i
+                <a href="{{ route("manifests.index") }}" class="btn btn-default btn-lg btn-block"
+                   title="Reinicar b&uacte;squeda"><i
                             class="glyphicon glyphicon-refresh"></i>
                 </a>
             </div>
@@ -143,6 +145,11 @@
     <!--//bottom-bar-->
 </footer>
 
+<div id="cover-display">
+    <img id="img-loading" src="/img/loading.gif">
+</div>
+
+
 <script src="/js/jquery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/libs/bootstrap-notify/bootstrap-notify.min.js"></script>
@@ -155,9 +162,24 @@
 
 @include('partials.notify')
 
-<div id="cover-display">
-    <img id="img-loading" src="/img/loading.gif">
-</div>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-68913606-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
 </body>
 
 </html>
