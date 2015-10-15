@@ -12,7 +12,7 @@ class CompanyTableSeeder extends Seeder
     public function run()
     {
         factory('App\Company', 1)->create([
-            'name' => 'Distri Gorras',
+            'name' => 'Mundigafas AYG',
         ]);
     }
 }

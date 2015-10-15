@@ -12,12 +12,20 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         factory('App\User', 1)->create([
-            'company_id'=>1,
+            'company_id' => 1,
             'name' => 'Luis Fernando Montoya',
             'email' => 'luismec90@gmail.com',
             'password' => bcrypt('123'),
         ]);
 
-        factory('App\User', 50)->create();
+
+        factory('App\User', 1)->create([
+            'company_id' => 1,
+            'name' => 'Daniel Ocampo',
+            'email' => 'daniel.ocampo@outlook.com',
+            'password' => bcrypt('123'),
+        ]);
+
+        // factory('App\User', 50)->create();
     }
 }
