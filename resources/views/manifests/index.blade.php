@@ -65,7 +65,7 @@
         </div>
 
         <div class="col-xs-2">
-            {!! Form::select('supplier_id', $brands,null,['id'=>'select2-brand']) !!}
+            {!! Form::select('brand_id', $brands,null,['id'=>'select2-brand']) !!}
         </div>
 
         <div class="col-xs-3">
