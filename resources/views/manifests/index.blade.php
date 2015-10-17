@@ -54,12 +54,13 @@
     <div class="row">
         {!! Form::open(['route' => 'manifests.index','method'=>'GET','class'=>'validate-form']) !!}
 
-        <div class="col-xs-3">
+      <!--  <div class="col-xs-3">
             <input type="text" class="form-control" value="{{ Request::get('code') }}"
                    placeholder="N&uacute;mero del manifiesto" name="code" autofocus>
         </div>
+        -->
 
-        <div class="col-xs-2">
+        <div class="col-xs-5">
             {!! Form::select('supplier_id', $suppliers,null,['id'=>'select2-supplier']) !!}
         </div>
 
