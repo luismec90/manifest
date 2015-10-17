@@ -96,7 +96,7 @@
             <th>Provedor</th>
             <th>Marca</th>
             <th class="">Referencias de los productos</th>
-            <th class="">Fecha de creaci&oacute;n</th>
+            <th class="col-xs-1">Fecha de creaci&oacute;n</th>
             <th  class=""></th>
         </tr>
         </thead>
