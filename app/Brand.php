@@ -15,4 +15,20 @@ class Brand extends Model
     public static $updateRules = [
         'name' => 'required',
     ];
+
+    public function manifests()
+    {
+        return $this->hasMany('App\Manifest');
+    }
+
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function($brand)
+        {
+            $brand->manifests()->delete();
+        });
+    }
 }
