@@ -48,7 +48,7 @@
                 {!! Form::open(['route' => ['brands.destroy',$brand->id],'method'=>'DELETE','class'=>'validate-form']) !!}
                 <div class="modal-body">
                     <p>
-                        Realmente deseas eliminar el marca <span id="brand-code" class="text-info">{{ $brand->name }}</span>?
+                        Realmente deseas eliminar la marca <span id="brand-code" class="text-info">{{ $brand->name }}</span>?
                     </p>
                 </div>
                 <div class="modal-footer">
