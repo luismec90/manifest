@@ -50,7 +50,7 @@
                 <td>{{ $brand->name }}</td>
                 <td>{{  strftime("%Y-%m-%d %l:%M %p", strtotime($brand->created_at)) }}</td>
                 <td class="text-center">
-                    <a href="{{route('brands.edit',$brand->id)}}" class="btn btn-primary btn-sm" title="Editar o eliminar este marca"> <span
+                    <a href="{{route('brands.edit',$brand->id)}}" class="btn btn-primary btn-sm" title="Editar o eliminar esta marca"> <span
                                 class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
                 </td>
 
