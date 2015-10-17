@@ -66,7 +66,7 @@ class BrandController extends Controller
         $brand->name = $request->get('name');
         $brand->save();
 
-        Flash::success('Marca creada exitosamente');
+        Flash::success('Categor&iacute;a creada exitosamente');
 
         return Redirect::back();
     }
@@ -115,7 +115,7 @@ class BrandController extends Controller
         $brands = Brand::where('company_id', Auth::user()->company_id)->where('name', $request->get('name'))->where('id', '<>', $brand->id)->first();
 
         if ($brands) {
-            Flash::error("Ya existe una marca no el mismo nombre: $brand->name");
+            Flash::error("Ya existe una categor&iacute;a no el mismo nombre: $brand->name");
 
             return Redirect::back();
         }
@@ -124,7 +124,7 @@ class BrandController extends Controller
         $brand->name = $request->get('name');
         $brand->save();
 
-        Flash::success('Marca editada exitosamente');
+        Flash::success('Categor&iacute;a editada exitosamente');
 
         return Redirect::back();
     }
@@ -142,7 +142,7 @@ class BrandController extends Controller
 
         $brand->delete();
 
-        Flash::success('Marca eliminado exitosamente');
+        Flash::success('Categor&iacute;a eliminado exitosamente');
 
         return Redirect::route('brands.index');
     }

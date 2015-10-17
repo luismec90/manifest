@@ -5,9 +5,9 @@
 
 @section('content')
 
-    <h1> Marcas
+    <h1> Categor&iacute;as
         <small>({{ $brands->total() }} encontradas)</small>
-        <a href="{{url('/brands/create')}}" class="btn btn-success pull-right">Crear marca</a>
+        <a href="{{url('/brands/create')}}" class="btn btn-success pull-right">Crear categor&iacute;a</a>
     </h1>
 
     <hr>
@@ -50,7 +50,7 @@
                 <td>{{ $brand->name }}</td>
                 <td>{{  strftime("%Y-%m-%d %l:%M %p", strtotime($brand->created_at)) }}</td>
                 <td class="text-center">
-                    <a href="{{route('brands.edit',$brand->id)}}" class="btn btn-primary btn-sm" title="Editar o eliminar esta marca"> <span
+                    <a href="{{route('brands.edit',$brand->id)}}" class="btn btn-primary btn-sm" title="Editar o eliminar esta categor&iacute;a"> <span
                                 class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
                 </td>
 

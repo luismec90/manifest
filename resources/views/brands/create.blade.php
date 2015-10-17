@@ -8,7 +8,7 @@
 
 @section('content')
     <h1><a class="btn btn-primary" title="Ir atr&aacute;s" href="{{ route('brands.index') }}"><i
-                    class="fa fa-reply"></i></a> Crear marca</h1>
+                    class="fa fa-reply"></i></a> Crear categor&iacute;a</h1>
 
     @include('partials.errors')
 

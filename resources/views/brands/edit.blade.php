@@ -14,7 +14,7 @@
 
 @section('content')
     <h1><a class="btn btn-primary" title="Ir atr&aacute;s" href="{{ route('brands.index') }}"><i
-                    class="fa fa-reply"></i></a> Editar marca
+                    class="fa fa-reply"></i></a> Editar categor&iacute;a
     <button id="btn-delete-brand" class="btn btn-danger pull-right">Eliminar</button>
     </h1>
 
@@ -43,12 +43,12 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Eliminar marca</h4>
+                    <h4 class="modal-title" id="myModalLabel">Eliminar categor&iacute;a</h4>
                 </div>
                 {!! Form::open(['route' => ['brands.destroy',$brand->id],'method'=>'DELETE','class'=>'validate-form']) !!}
                 <div class="modal-body">
                     <p>
-                        Realmente deseas eliminar la marca <span id="brand-code" class="text-info">{{ $brand->name }}</span>?
+                        Realmente deseas eliminar la categor&iacute;a <span id="brand-code" class="text-info">{{ $brand->name }}</span>?
                     </p>
                 </div>
                 <div class="modal-footer">

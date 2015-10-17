@@ -54,7 +54,7 @@
             <ul class="nav navbar-nav">
                 <li class="{{ Route::currentRouteName()=="manifests.index" ? "active" : "" }} nav-item"><a href="/">Manifiestos</a></li>
                 <li class="{{ Route::currentRouteName()=="suppliers.index" ? "active" : "" }} nav-item"><a href="/suppliers">Provedores</a></li>
-                <li class="{{ Route::currentRouteName()=="brands.index" ? "active" : "" }} nav-item"><a href="/brands">Marcas</a></li>
+                <li class="{{ Route::currentRouteName()=="brands.index" ? "active" : "" }} nav-item"><a href="/brands">Categor&iacute;as</a></li>
 
             </ul>
 

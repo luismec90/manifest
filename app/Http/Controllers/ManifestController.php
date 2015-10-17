@@ -45,7 +45,7 @@ class ManifestController extends Controller
         $suppliers = ['' => 'Provedor'] + Supplier::orderBy('name', 'ASC')
                 ->lists('name', 'id')->all();
 
-        $brands = ['' => 'Marca'] + Brand::orderBy('name', 'ASC')
+        $brands = ['' => 'Categor&iacute;a'] + Brand::orderBy('name', 'ASC')
                 ->lists('name', 'id')->all();
 
         $manifests = $manifests->orderBy('id', 'desc')->paginate(15);

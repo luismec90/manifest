@@ -67,7 +67,7 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('brand_id', 'Marca: *') !!}
+        {!! Form::label('brand_id', 'Categor&iacute;a: *') !!}
         <div>
             {!! Form::select('brand_id', $brands,null,['id'=>'select2-brand','required'=>'true']) !!}
         </div>

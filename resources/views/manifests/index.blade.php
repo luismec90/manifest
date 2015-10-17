@@ -37,7 +37,7 @@
             });
 
             $("#select2-brand").select2({
-                placeholder: "Marca",
+                placeholder: "Categor&iacute;a",
             });
             $('#products').tokenfield({
                 delimiter: ' '
@@ -94,7 +94,7 @@
         <tr class="bg-info">
             <th>N&uacute;mero del manifiesto</th>
             <th>Provedor</th>
-            <th>Marca</th>
+            <th>Categor&iacute;a</th>
             <th class="">Referencias de los productos</th>
             <th class="col-xs-1">Fecha de creaci&oacute;n</th>
             <th  class=""></th>
