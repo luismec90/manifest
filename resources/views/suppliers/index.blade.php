@@ -24,7 +24,7 @@
                    placeholder="NIT" name="nit">
         </div>
 
-        <div class="col-xs-5">
+        <div class="col-xs-4">
             <input type="text" class="form-control" value="{{ Request::get('contact_name') }}"
                    placeholder="Nombre de contacto" name="contact_name">
         </div>
