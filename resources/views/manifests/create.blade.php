@@ -4,12 +4,40 @@
 <link href="/css/tokenfield-typeahead.css" type="text/css" rel="stylesheet">
 <!-- Tokenfield CSS -->
 <link href="/css/bootstrap-tokenfield.css" type="text/css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.css" rel="stylesheet"/>
+<style>
+    .select2-container .select2-selection--single {
+        height: 34px !important;
+        border: 1px solid #ccc;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 32px;
+    }
+
+    .select2-container {
+        line-height: 32px !important;
+        width: 100% !important;
+    }
+</style>
 @stop
 
 @section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap-tokenfield.js"></script>
+
     <script>
         $(function () {
+            $("#select2-supplier").select2({
+                placeholder: "Seleccionar",
+            });
+
+            $("#select2-brand").select2({
+                placeholder: "Seleccionar",
+            });
             $('#products').tokenfield({
                 delimiter: ' '
             });
@@ -27,17 +55,26 @@
     {!! Form::open(['url' => 'manifests','class'=>'validate-form']) !!}
 
     <div class="form-group">
-        {!! Form::label('code', 'Codigo:') !!}
+        {!! Form::label('code', 'N&uacute;mero del manifiesto: *') !!}
         {!! Form::text('code',null,['class'=>'form-control','required'=>'true']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('supplier', 'Nombre del provedor:') !!}
-        {!! Form::text('supplier',null,['class'=>'form-control','required'=>'true']) !!}
+        {!! Form::label('supplier_id', 'Provedor: *') !!}
+        <div>
+            {!! Form::select('supplier_id', $suppliers,null,['id'=>'select2-supplier','required'=>'true']) !!}
+        </div>
     </div>
 
     <div class="form-group">
-        {!! Form::label('products', 'Productos:') !!}
+        {!! Form::label('brand_id', 'Marca: *') !!}
+        <div>
+            {!! Form::select('brand_id', $brands,null,['id'=>'select2-brand','required'=>'true']) !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('products', 'Referencias de los productos: *') !!}
         {!! Form::text('products',null,['class'=>'form-control input-lg','required'=>'true']) !!}
     </div>
     <br>

@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->foreign('manifest_id')->references('id')->on('manifests')->onDelete('cascade');
             $table->string('reference');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

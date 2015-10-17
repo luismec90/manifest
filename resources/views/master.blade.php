@@ -52,7 +52,9 @@
         <!--//navbar-header-->
         <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active nav-item"><a href="/">Inicio</a></li>
+                <li class="{{ Route::currentRouteName()=="manifests.index" ? "active" : "" }} nav-item"><a href="/">Manifiestos</a></li>
+                <li class="{{ Route::currentRouteName()=="suppliers.index" ? "active" : "" }} nav-item"><a href="/suppliers">Provedores</a></li>
+                <li class="{{ Route::currentRouteName()=="brands.index" ? "active" : "" }} nav-item"><a href="/brands">Marcas</a></li>
 
             </ul>
 
@@ -84,37 +86,7 @@
 
 <!-- Page Content -->
 <div id="main-container" class="container">
-    @if(Auth::check())
-        <hr>
-        <div class="row">
-            {!! Form::open(['url' => '/manifests','method'=>'GET','class'=>'validate-form']) !!}
-            <div class="col-xs-10">
-                <input type="text" class="form-control input-lg" value="{{ Request::get('s') }}"
-                       placeholder="Buscar manifiestos por referencia ..." name="s">
-
-            </div>
-            <!--
-            <div class="col-xs-4">
-                <input type="text" class="form-control input-lg datepicker" value="{{ Request::get('d') }}"
-                       placeholder="Buscar por fecha ..." name="d">
-            </div>-->
-            <div class="col-xs-1">
-                <button class="btn btn-primary btn-lg btn-block" type="submit" title="Buscar"><i
-                            class="glyphicon glyphicon-search"></i>
-                </button>
-            </div>
-            <div class="col-xs-1">
-                <a href="{{ route("manifests.index") }}" class="btn btn-default btn-lg btn-block"
-                   title="Reinicar b&uacute;squeda"><i
-                            class="glyphicon glyphicon-refresh"></i>
-                </a>
-            </div>
-            </form>
-        </div>
-        <hr>
-    @endif
     @yield('content')
-
 </div>
 <!-- /.container -->
 

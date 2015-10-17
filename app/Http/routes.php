@@ -11,7 +11,9 @@
 |
 */
 
-Route::resource('manifests','ManifestController');
+Route::resource('manifests', 'ManifestController');
+Route::resource('suppliers', 'SupplierController');
+Route::resource('brands', 'BrandController');
 
 Route::get('/', 'HomeController@index');
 

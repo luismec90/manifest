@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Manifest;
 use App\Product;
-use Request;
-use App\Http\Requests;
+use App\Supplier;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use Laracasts\Flash\Flash;
@@ -16,23 +17,40 @@ use Auth;
 
 class ManifestController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if (Request::get('s') !== '') {
-            $s = Request::get('s');
-            $manifests = Manifest::whereHas('products', function ($q) use ($s) {
-                $q->where('products.reference', 'like', "%$s%");
-            })->paginate(15);
-        } else
-            $manifests = Manifest::paginate(15);
+        $manifests = Manifest::select();
 
-        return view('manifests.index', compact('manifests'));
+        if ($request->has('code'))
+            $manifests->where('code', 'like', "%" . trim($request->get('code')) . "%");
 
+        if ($request->has('supplier_id'))
+            $manifests->where('supplier_id', 'like', "%" . trim($request->get('supplier_id')) . "%");
+
+        if ($request->has('brand_id'))
+            $manifests->where('brand_id', 'like', "%" . trim($request->get('brand_id')) . "%");
+
+        if ($request->has('reference'))
+            $manifests->whereHas('products', function ($q) use ($request) {
+                $q->where('products.reference', 'like', "%" . trim($request->get('reference')) . "%");
+            });
+
+        $suppliers = ['' => 'Provedor'] + Supplier::orderBy('name', 'ASC')
+                ->lists('name', 'id')->all();
+
+        $brands = ['' => 'Marca'] + Brand::orderBy('name', 'ASC')
+                ->lists('name', 'id')->all();
+
+        $manifests = $manifests->orderBy('id', 'desc')->paginate(15);
+
+        return view('manifests.index', compact('manifests', 'suppliers', 'brands'));
     }
 
     /**
@@ -42,8 +60,13 @@ class ManifestController extends Controller
      */
     public function create()
     {
+        $suppliers = ['' => ''] + Supplier::orderBy('name', 'ASC')
+                ->lists('name', 'id')->all();
 
-        return view('manifests.create');
+        $brands = ['' => ''] + Brand::orderBy('name', 'ASC')
+                ->lists('name', 'id')->all();
+
+        return view('manifests.create', compact('suppliers', 'brands'));
     }
 
     /**
@@ -52,20 +75,21 @@ class ManifestController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        $validation = Validator::make(Request::all(), Manifest::$rules);
+        $validation = Validator::make($request->all(), Manifest::$rules);
 
         if ($validation->fails())
             return Redirect::back()->withInput()->withErrors($validation);
 
         $manifest = new Manifest;
         $manifest->company_id = Auth::user()->company_id;
-        $manifest->code = Request::get('code');
-        $manifest->supplier = Request::get('supplier');
+        $manifest->supplier_id = $request->get('supplier_id');
+        $manifest->brand_id = $request->get('brand_id');
+        $manifest->code = $request->get('code');
         $manifest->save();
 
-        $products = explode(" ", Request::get('products'));
+        $products = explode(" ", $request->get('products'));
 
         foreach ($products as $row) {
             $product = new Product;
@@ -99,11 +123,17 @@ class ManifestController extends Controller
      */
     public function edit($manifestID)
     {
+        $suppliers = ['' => ''] + Supplier::orderBy('name', 'ASC')
+                ->lists('name', 'id')->all();
+
+        $brands = ['' => ''] + Brand::orderBy('name', 'ASC')
+                ->lists('name', 'id')->all();
+
         $manifest = Manifest::with('products')
             ->findOrFail($manifestID);
 
 
-        return view('manifests.edit', compact('manifest'));
+        return view('manifests.edit', compact('manifest','suppliers', 'brands'));
     }
 
     /**
@@ -113,9 +143,9 @@ class ManifestController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update($manifestID)
+    public function update(Request $request,$manifestID)
     {
-        $validation = Validator::make(Request::all(), Manifest::$rules);
+        $validation = Validator::make($request->all(), Manifest::$rules);
 
         if ($validation->fails())
             return Redirect::back()->withInput()->withErrors($validation);
@@ -124,13 +154,14 @@ class ManifestController extends Controller
             ->where('company_id', Auth::user()->company_id)
             ->findOrFail($manifestID);
 
-        $manifest->code = Request::get('code');
-        $manifest->supplier = Request::get('supplier');
+        $manifest->supplier_id = $request->get('supplier_id');
+        $manifest->brand_id = $request->get('brand_id');
+        $manifest->code = $request->get('code');
         $manifest->save();
 
         $manifest->products()->delete();
 
-        $products = explode(" ", Request::get('products'));
+        $products = explode(" ", $request->get('products'));
 
         foreach ($products as $row) {
             $product = new Product;
@@ -153,14 +184,13 @@ class ManifestController extends Controller
      */
     public function destroy($manifestID)
     {
-        $manifest = Manifest::with('products')
-            ->where('company_id', Auth::user()->company_id)
+        $manifest = Manifest::where('company_id', Auth::user()->company_id)
             ->findOrFail($manifestID);
 
         $manifest->delete();
 
         Flash::success('Manifiesto eliminado exitosamente');
 
-        return Redirect::back();
+        return Redirect::route('manifests.index');
     }
 }
