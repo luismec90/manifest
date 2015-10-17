@@ -37,7 +37,7 @@
             });
 
             $("#select2-brand").select2({
-                placeholder: "Categor&iacute;a",
+                placeholder: "Categoria",
             });
             $('#products').tokenfield({
                 delimiter: ' '
