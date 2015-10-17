@@ -24,16 +24,16 @@
                    placeholder="NIT" name="nit">
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-xs-5">
             <input type="text" class="form-control" value="{{ Request::get('contact_name') }}"
                    placeholder="Nombre de contacto" name="contact_name">
         </div>
 
-      <!--    <div class="col-xs-2">
+      {{--    <div class="col-xs-2">
             <input type="text" class="form-control" value="{{ Request::get('contact_phone') }}"
                    placeholder="Tel&eacute;fono de contacto" name="contact_phone">
         </div>
-        -->
+        --}}
 
         <div class="col-xs-1">
             <button class="btn btn-primary btn-block" type="submit" title="Buscar"><i
