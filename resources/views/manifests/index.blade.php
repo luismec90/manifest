@@ -61,11 +61,11 @@
         -->
 
         <div class="col-xs-5">
-            {!! Form::select('supplier_id', $suppliers,null,['id'=>'select2-supplier']) !!}
+            {!! Form::select('supplier_id', $suppliers,Request::get('supplier_id'),['id'=>'select2-supplier']) !!}
         </div>
 
         <div class="col-xs-2">
-            {!! Form::select('brand_id', $brands,null,['id'=>'select2-brand']) !!}
+            {!! Form::select('brand_id', $brands,Request::get('brand_id'),['id'=>'select2-brand']) !!}
         </div>
 
         <div class="col-xs-3">
