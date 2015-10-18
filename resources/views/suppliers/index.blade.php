@@ -7,7 +7,7 @@
 
     <h1> Provedores
         <small>({{ $suppliers->total() }} encontrados)</small>
-        <a href="{{url('/suppliers/create')}}" class="btn btn-success pull-right">Crear provedor</a>
+        <a href="{{url('/suppliers/create')}}" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear provedor</a>
     </h1>
 
     <hr>

@@ -15,7 +15,7 @@
 @section('content')
     <h1><a class="btn btn-primary" title="Ir atr&aacute;s" href="{{ route('suppliers.index') }}"><i
                     class="fa fa-reply"></i></a> Editar provedor
-    <button id="btn-delete-supplier" class="btn btn-danger pull-right">Eliminar</button>
+    <button id="btn-delete-supplier" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</button>
     </h1>
 
     @include('partials.errors')

@@ -48,7 +48,9 @@
 @section('content')
     <h1><a class="btn btn-primary" title="Ir atr&aacute;s" href="{{ route('manifests.index') }}"><i
                     class="fa fa-reply"></i></a> Editar manifiesto
-        <button id="btn-delete-manifest" class="btn btn-danger pull-right">Eliminar</button>
+        <button id="btn-delete-manifest" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-trash"
+                                                                                 aria-hidden="true"></span> Eliminar
+        </button>
     </h1>
 
     @include('partials.errors')
@@ -110,4 +112,5 @@
                 {!! Form::close() !!}
             </div>
         </div>
+    </div>
 @endsection

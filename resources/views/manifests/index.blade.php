@@ -48,7 +48,7 @@
 
 @section('content')
     <h1>Manifiestos <small>({{ $manifests->total() }} encontrados)</small>
-        <a href="{{url('/manifests/create')}}" class="btn btn-success pull-right">Crear manifiesto</a>
+        <a href="{{url('/manifests/create')}}" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear manifiesto</a>
     </h1>
     <hr>
     <div class="row">
