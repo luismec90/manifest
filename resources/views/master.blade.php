@@ -38,17 +38,20 @@
 <nav class="main-nav" role="navigation">
     <div class="container">
         <div class="navbar-header">
+
+            <a id="logo" class="navbar-brand" href="/">
+                Manifiestos.co
+            </a>
+
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <!--//nav-toggle-->
+
         </div>
-        <a id="logo" class="navbar-brand" href="/">
-           MANIFIESTOS
-        </a>
+
         <!--//navbar-header-->
         <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
