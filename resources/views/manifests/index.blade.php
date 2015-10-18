@@ -96,9 +96,9 @@
         <tr class="bg-info">
             <th>N&uacute;mero del manifiesto</th>
             <th>Provedor</th>
-            <th>Descripci&oacute;n</th>
+            <td class="hidden-xs">Descripci&oacute;n</th>
             <th class="">Referencias de los productos</th>
-            <th class="col-xs-1">Fecha de creaci&oacute;n</th>
+            <th class="col-xs-1 hidden-xs">Fecha de creaci&oacute;n</th>
             <th  class=""></th>
         </tr>
         </thead>
@@ -107,13 +107,13 @@
             <tr>
                 <td>{{ $manifest->code }}</td>
                 <td>{{ $manifest->supplier->name }}</td>
-                <td>{{ $manifest->description }}</td>
+                <td class="hidden-xs">{{ $manifest->description }}</td>
                 <td>
                     @foreach($manifest->products as $product)
                         <div class="custom-token"> {{ $product->reference }} </div>
                     @endforeach
                 </td>
-                <td>{{  strftime("%Y-%m-%d %l:%M %p", strtotime($manifest->created_at)) }}</td>
+                <td class="hidden-xs">{{  strftime("%Y-%m-%d %l:%M %p", strtotime($manifest->created_at)) }}</td>
                 <td class="text-center">
                     <a href="{{route('manifests.edit',$manifest->id)}}" class="btn btn-primary btn-sm"
                        title="Editar o eliminar este manifiesto"> <span
