@@ -55,8 +55,8 @@
         <!--//navbar-header-->
         <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="{{ Route::currentRouteName()=="manifests.index" ? "active" : "" }} nav-item"><a href="/">Manifiestos</a></li>
-                <li class="{{ Route::currentRouteName()=="suppliers.index" ? "active" : "" }} nav-item"><a href="/suppliers">Provedores</a></li>
+                <li class="{{ Route::currentRouteName()=="manifests.index" ? "active" : "" }} nav-item"><a href="/"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> Manifiestos</a></li>
+                <li class="{{ Route::currentRouteName()=="suppliers.index" ? "active" : "" }} nav-item"><a href="/suppliers"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Provedores</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
