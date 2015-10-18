@@ -93,10 +93,10 @@
     <hr>
     <table class="table table-striped table-bordered table-hover">
         <thead>
-        <tr class="bg-info">
+        <tr class="bg-success">
             <th>N&uacute;mero del manifiesto</th>
             <th>Provedor</th>
-            <td class="hidden-xs">Descripci&oacute;n</th>
+            <th class="hidden-xs">Descripci&oacute;n</th>
             <th class="">Referencias de los productos</th>
             <th class="col-xs-1 hidden-xs">Fecha de creaci&oacute;n</th>
             <th  class=""></th>

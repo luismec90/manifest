@@ -53,7 +53,7 @@
     <hr>
     <table class="table table-striped table-bordered table-hover">
         <thead>
-        <tr class="bg-info">
+        <tr class="bg-success">
             <th>Nombre</th>
             <th>NIT</th>
             <th>Nombre de contacto</th>
