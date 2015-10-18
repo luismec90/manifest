@@ -1,3 +1,7 @@
+body {
+    color: #515151;
+    background: #FAFAFA;
+}
 
 .custom-token {
     -webkit-box-sizing: border-box;
@@ -56,3 +60,14 @@
     margin-top: 20px;
 }
 
+#menu-name > a{
+    padding: 0;
+    margin-top: 5px;
+}
+
+#main-container {
+
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+
+}

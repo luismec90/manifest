@@ -16,8 +16,8 @@
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker.min.css"
-          rel="stylesheet">
+
+
 
     <link href="/css/app.css" rel="stylesheet">
 
@@ -58,9 +58,11 @@
 
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
-                    <li class="nav-item  dropdown">
+                    <li id="menu-name" class="nav-item  dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="true">
+                            {{ Auth::user()->company->name }}
+                            <br>
                             {{ Auth::user()->name }}
                             <span class="caret"></span>
                         </a>

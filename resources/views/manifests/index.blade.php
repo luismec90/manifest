@@ -91,7 +91,7 @@
         </form>
     </div>
     <hr>
-    <table class="table table-striped table-bordered table-hover table-condensed">
+    <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr class="bg-info">
             <th>N&uacute;mero del manifiesto</th>

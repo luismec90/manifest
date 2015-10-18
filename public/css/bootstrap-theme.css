@@ -935,7 +935,6 @@ ul.custom-list-style li {
 
 .main-nav .nav .nav-item {
     font-weight: 600;
-    text-transform: uppercase;
     font-family: 'open sans', arial, sans-serif;
     z-index: 100;
 }

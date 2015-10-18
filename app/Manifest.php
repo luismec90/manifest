@@ -13,7 +13,6 @@ class Manifest extends Model
     public static $rules = [
         'code' => 'required',
         'supplier_id' => 'required|exists:suppliers,id',
-        'brand_id' => 'required|exists:brands,id',
         'products' => 'required',
     ];
 

@@ -78,7 +78,7 @@ class ManifestController extends Controller
         $manifest = new Manifest;
         $manifest->company_id = Auth::user()->company_id;
         $manifest->supplier_id = $request->get('supplier_id');
-        $manifest->brand_id = $request->get('brand_id');
+        $manifest->description = $request->get('description');
         $manifest->code = $request->get('code');
         $manifest->save();
 
@@ -145,7 +145,7 @@ class ManifestController extends Controller
             ->findOrFail($manifestID);
 
         $manifest->supplier_id = $request->get('supplier_id');
-        $manifest->brand_id = $request->get('brand_id');
+        $manifest->description = $request->get('description');
         $manifest->code = $request->get('code');
         $manifest->save();
 
