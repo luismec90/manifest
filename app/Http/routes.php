@@ -13,10 +13,8 @@
 
 Route::resource('manifests', 'ManifestController');
 Route::resource('suppliers', 'SupplierController');
-Route::resource('brands', 'BrandController');
 
 Route::get('/', 'HomeController@index');
-
 
 // Authentication routes...
 Route::get('entrar', 'Auth\AuthController@getLogin');

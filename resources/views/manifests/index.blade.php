@@ -60,13 +60,15 @@
         </div>
         -->
 
-        <div class="col-xs-5">
+        <div class="col-xs-4">
             {!! Form::select('supplier_id', $suppliers,Request::get('supplier_id'),['id'=>'select2-supplier']) !!}
         </div>
 
-        <div class="col-xs-2">
-            {!! Form::select('brand_id', $brands,Request::get('brand_id'),['id'=>'select2-brand']) !!}
+        <div class="col-xs-3">
+            <input type="text" class="form-control" value="{{ Request::get('description') }}"
+                   placeholder="Descripci&oacute;n" name="description">
         </div>
+
 
         <div class="col-xs-3">
             <input type="text" class="form-control" value="{{ Request::get('reference') }}"
@@ -94,7 +96,7 @@
         <tr class="bg-info">
             <th>N&uacute;mero del manifiesto</th>
             <th>Provedor</th>
-            <th>Categor&iacute;a</th>
+            <th>Descripci&oacute;n</th>
             <th class="">Referencias de los productos</th>
             <th class="col-xs-1">Fecha de creaci&oacute;n</th>
             <th  class=""></th>
@@ -105,7 +107,7 @@
             <tr>
                 <td>{{ $manifest->code }}</td>
                 <td>{{ $manifest->supplier->name }}</td>
-                <td>{{ $manifest->brand->name }}</td>
+                <td>{{ $manifest->description }}</td>
                 <td>
                     @foreach($manifest->products as $product)
                         <div class="custom-token"> {{ $product->reference }} </div>

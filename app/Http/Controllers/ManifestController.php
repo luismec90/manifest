@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Brand;
 use App\Manifest;
 use App\Product;
 use App\Supplier;
@@ -45,12 +44,9 @@ class ManifestController extends Controller
         $suppliers = ['' => 'Provedor'] + Supplier::orderBy('name', 'ASC')
                 ->lists('name', 'id')->all();
 
-        $brands = ['' => 'Categor&iacute;a'] + Brand::orderBy('name', 'ASC')
-                ->lists('name', 'id')->all();
-
         $manifests = $manifests->orderBy('id', 'desc')->paginate(15);
 
-        return view('manifests.index', compact('manifests', 'suppliers', 'brands'));
+        return view('manifests.index', compact('manifests', 'suppliers'));
     }
 
     /**
@@ -63,10 +59,7 @@ class ManifestController extends Controller
         $suppliers = ['' => ''] + Supplier::orderBy('name', 'ASC')
                 ->lists('name', 'id')->all();
 
-        $brands = ['' => ''] + Brand::orderBy('name', 'ASC')
-                ->lists('name', 'id')->all();
-
-        return view('manifests.create', compact('suppliers', 'brands'));
+        return view('manifests.create', compact('suppliers'));
     }
 
     /**
@@ -126,14 +119,11 @@ class ManifestController extends Controller
         $suppliers = ['' => ''] + Supplier::orderBy('name', 'ASC')
                 ->lists('name', 'id')->all();
 
-        $brands = ['' => ''] + Brand::orderBy('name', 'ASC')
-                ->lists('name', 'id')->all();
-
         $manifest = Manifest::with('products')
             ->findOrFail($manifestID);
 
 
-        return view('manifests.edit', compact('manifest','suppliers', 'brands'));
+        return view('manifests.edit', compact('manifest','suppliers'));
     }
 
     /**

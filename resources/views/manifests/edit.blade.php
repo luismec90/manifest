@@ -69,9 +69,9 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('brand_id', 'Categor&iacute;a: *') !!}
+        {!! Form::label('description', 'Descripci&oacute;n: *') !!}
         <div>
-            {!! Form::select('brand_id', $brands,$manifest->brand_id,['id'=>'select2-brand','required'=>'true']) !!}
+            {!! Form::text('description',null,['class'=>'form-control']) !!}
         </div>
     </div>
 

@@ -37,12 +37,6 @@ $factory->define(App\Supplier::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Brand::class, function (Faker\Generator $faker) {
-    return [
-        'company_id' => 1,
-        'name' => str_random(10),
-    ];
-});
 
 $factory->define(App\Manifest::class, function (Faker\Generator $faker) {
     return [

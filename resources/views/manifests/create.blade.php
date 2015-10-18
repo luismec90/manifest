@@ -35,9 +35,6 @@
                 placeholder: "Seleccionar",
             });
 
-            $("#select2-brand").select2({
-                placeholder: "Seleccionar",
-            });
             $('#products').tokenfield({
                 delimiter: ' '
             });
@@ -67,10 +64,8 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('brand_id', 'Categor&iacute;a: *') !!}
-        <div>
-            {!! Form::select('brand_id', $brands,null,['id'=>'select2-brand','required'=>'true']) !!}
-        </div>
+        {!! Form::label('description', 'Descripci&oacute;n: *') !!}
+        {!! Form::text('description',null,['class'=>'form-control']) !!}
     </div>
 
     <div class="form-group">

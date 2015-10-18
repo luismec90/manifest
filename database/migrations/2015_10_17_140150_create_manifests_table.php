@@ -18,9 +18,8 @@ class CreateManifestsTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->integer('supplier_id')->unsigned()->index();
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
-            $table->integer('brand_id')->unsigned()->index();
-            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->string('code');
+            $table->string('description', 512);
             $table->timestamps();
             $table->softDeletes();
         });
