@@ -33,8 +33,8 @@ class ManifestController extends Controller
         if ($request->has('supplier_id'))
             $manifests->where('supplier_id', 'like', "%" . trim($request->get('supplier_id')) . "%");
 
-        if ($request->has('brand_id'))
-            $manifests->where('brand_id', 'like', "%" . trim($request->get('brand_id')) . "%");
+        if ($request->has('description'))
+            $manifests->where('description', 'like', "%" . trim($request->get('description')) . "%");
 
         if ($request->has('reference'))
             $manifests->whereHas('products', function ($q) use ($request) {
