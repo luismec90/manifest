@@ -35,11 +35,12 @@
                 placeholder: "Seleccionar",
             });
 
-            $("#select2-brand").select2({
-                placeholder: "Seleccionar",
-            });
             $('#products').tokenfield({
                 delimiter: ' '
+            });
+
+            $("#btn-delete-manifest").click(function () {
+                $("#modal-delete-manifest").modal('show');
             });
         });
     </script>

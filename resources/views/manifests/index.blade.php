@@ -36,9 +36,6 @@
                 placeholder: "Provedor",
             });
 
-            $("#select2-brand").select2({
-                placeholder: "Categoria",
-            });
             $('#products').tokenfield({
                 delimiter: ' '
             });
