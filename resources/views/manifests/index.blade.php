@@ -93,7 +93,7 @@
     <hr>
     <table class="table table-striped table-bordered table-hover">
         <thead>
-        <tr class="bg-success">
+        <tr class="bg-info">
             <th>N&uacute;mero del manifiesto</th>
             <th>Provedor</th>
             <th class="hidden-xs">Descripci&oacute;n</th>
