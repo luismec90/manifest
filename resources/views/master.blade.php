@@ -16,7 +16,7 @@
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" rel="stylesheet">
-
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
 
 
     <link href="/css/app.css" rel="stylesheet">
@@ -46,8 +46,8 @@
             </button>
             <!--//nav-toggle-->
         </div>
-        <a class="navbar-brand" href="/">
-            <img src="/img/logo.png" height="45" alt="">
+        <a id="logo" class="navbar-brand" href="/">
+           MANIFIESTOS
         </a>
         <!--//navbar-header-->
         <div class="navbar-collapse collapse" id="navbar-collapse">

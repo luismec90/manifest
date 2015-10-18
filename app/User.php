@@ -41,6 +41,6 @@ class User extends Model implements AuthenticatableContract,
 
     public function company()
     {
-        return $this->belongsTo('App\company');
+        return $this->belongsTo('App\Company');
     }
 }
