@@ -57,7 +57,7 @@
             <th>Nombre</th>
             <th>NIT</th>
             <th>Nombre de contacto</th>
-            <th>Numero de contacto</th>
+            <th>N&uacute;mero de contacto</th>
             <th class="hidden-xs">Fecha</th>
             <th></th>
         </tr>
