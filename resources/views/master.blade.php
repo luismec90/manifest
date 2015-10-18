@@ -63,7 +63,7 @@
                            aria-expanded="true">
                             {{ Auth::user()->company->name }}
                             <br>
-                            {{ Auth::user()->name }}
+                         <small>  {{ Auth::user()->name }} </small>
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="drop3">

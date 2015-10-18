@@ -64,7 +64,7 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('description', 'Descripci&oacute;n: *') !!}
+        {!! Form::label('description', 'Descripci&oacute;n:') !!}
         {!! Form::text('description',null,['class'=>'form-control']) !!}
     </div>
 
