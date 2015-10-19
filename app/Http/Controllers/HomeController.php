@@ -21,4 +21,6 @@ class HomeController extends Controller
         return Redirect::to('/entrar');
     }
 
+
+
 }

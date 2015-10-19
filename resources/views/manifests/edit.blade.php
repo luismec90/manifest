@@ -57,7 +57,7 @@
     @include('partials.errors')
 
 
-    {!! Form::open(['route' => ['manifests.update',$manifest->id],'method'=>'PUT','class'=>'validate-form']) !!}
+    {!! Form::open(['route' => ['manifests.update',$manifest->id],'method'=>'PUT','files' => true,'class'=>'validate-form']) !!}
 
     <div class="form-group">
         {!! Form::label('code', 'Codigo:') !!}
@@ -72,6 +72,11 @@
     </div>
 
     <div class="form-group">
+        {!! Form::label('products', 'Productos: *') !!}
+        {!! Form::text('products', implode(" ",$manifest->products->lists('reference')->all()),['class'=>'form-control input-lg','required'=>'true']) !!}
+    </div>
+
+    <div class="form-group">
         {!! Form::label('description', 'Descripci&oacute;n:') !!}
         <div>
             {!! Form::text('description',$manifest->description,['class'=>'form-control']) !!}
@@ -80,9 +85,18 @@
 
 
     <div class="form-group">
-        {!! Form::label('products', 'Productos:') !!}
-        {!! Form::text('products', implode(" ",$manifest->products->lists('reference')->all()),['class'=>'form-control input-lg','required'=>'true']) !!}
+        {!! Form::label('photo', 'Foto del manifiesto:') !!}
+        <div class="input-group">
+            <input type="text" value="{{  $manifest->photo }}" class="form-control" readonly="">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        Seleccionar...
+                                        {!! Form::file('photo',['id'=>'photo','accept'=>'image/*']) !!}
+                                    </span>
+                                </span>
+        </div>
     </div>
+
     <br>
     <div class="form-group ">
         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}

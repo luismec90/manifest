@@ -7,6 +7,8 @@ use App\Product;
 use App\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 use Validator;
 use Laracasts\Flash\Flash;
 use Redirect;
@@ -92,6 +94,21 @@ class ManifestController extends Controller
             $product->save();
         }
 
+        if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
+            $photo = $request->file('photo');
+
+            $path = "companies/" . Auth::user()->company_id;
+            if (!File::exists($path)) {
+                File::makeDirectory($path);
+            }
+
+            $filename = $manifest->id . "." . $photo->getClientOriginalExtension();
+            Image::make($photo->getRealPath())
+                ->save("$path/$filename");
+            $manifest->photo = $filename;
+            $manifest->save();
+        }
+
         Flash::success('Manifiesto creado exitosamente');
 
         return Redirect::back();
@@ -123,7 +140,7 @@ class ManifestController extends Controller
             ->findOrFail($manifestID);
 
 
-        return view('manifests.edit', compact('manifest','suppliers'));
+        return view('manifests.edit', compact('manifest', 'suppliers'));
     }
 
     /**
@@ -133,7 +150,7 @@ class ManifestController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$manifestID)
+    public function update(Request $request, $manifestID)
     {
         $validation = Validator::make($request->all(), Manifest::$rules);
 
@@ -159,6 +176,25 @@ class ManifestController extends Controller
             $product->manifest_id = $manifest->id;
             $product->reference = $row;
             $product->save();
+        }
+
+        if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
+            $photo = $request->file('photo');
+
+            $path = "companies/" . Auth::user()->company_id;
+
+            if (!File::exists($path))
+                File::makeDirectory($path);
+
+            $filename = $manifest->id . "." . $photo->getClientOriginalExtension();
+
+            if (File::isFile($path . "/" . $manifest->photo))
+                File::delete($path . "/" . $manifest->photo);
+
+            Image::make($photo->getRealPath())
+                ->save("$path/$filename");
+            $manifest->photo = $filename;
+            $manifest->save();
         }
 
         Flash::success('Manifiesto editado exitosamente');

@@ -44,14 +44,17 @@
 @stop
 
 @section('content')
-    <h1>Manifiestos <small>({{ $manifests->total() }} encontrados)</small>
-        <a href="{{url('/manifests/create')}}" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear manifiesto</a>
+    <h1>Manifiestos
+        <small>({{ $manifests->total() }} encontrados)</small>
+        <a href="{{url('/manifests/create')}}" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus"
+                                                                                        aria-hidden="true"></span> Crear
+            manifiesto</a>
     </h1>
     <hr>
     <div class="row">
         {!! Form::open(['route' => 'manifests.index','method'=>'GET','class'=>'validate-form']) !!}
 
-      <!--  <div class="col-xs-3">
+                <!--  <div class="col-xs-3">
             <input type="text" class="form-control" value="{{ Request::get('code') }}"
                    placeholder="N&uacute;mero del manifiesto" name="code" autofocus>
         </div>
@@ -95,8 +98,9 @@
             <th>Provedor</th>
             <th class="hidden-xs">Descripci&oacute;n</th>
             <th class="">Referencias de los productos</th>
+            <th class="">Foto</th>
             <th class="col-xs-1 hidden-xs">Fecha de creaci&oacute;n</th>
-            <th  class=""></th>
+            <th class=""></th>
         </tr>
         </thead>
         <tbody>
@@ -109,6 +113,14 @@
                     @foreach($manifest->products as $product)
                         <div class="custom-token"> {{ $product->reference }} </div>
                     @endforeach
+                </td>
+                <td class="hidden-xs">
+                    @if($manifest->photo!="")
+                    <a href="/companies/{{ Auth::user()->company_id."/".$manifest->photo }}" data-lightbox="image-1">
+                        <img src="/companies/{{ Auth::user()->company_id."/".$manifest->photo }}"
+                             width="100">
+                    </a>
+                    @endif
                 </td>
                 <td class="hidden-xs">{{  strftime("%Y-%m-%d %l:%M %p", strtotime($manifest->created_at)) }}</td>
                 <td class="text-center">

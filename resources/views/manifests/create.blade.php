@@ -49,7 +49,7 @@
     @include('partials.errors')
 
 
-    {!! Form::open(['url' => 'manifests','class'=>'validate-form']) !!}
+    {!! Form::open(['url' => 'manifests','class'=>'validate-form','files' => true]) !!}
 
     <div class="form-group">
         {!! Form::label('code', 'N&uacute;mero del manifiesto: *') !!}
@@ -64,14 +64,28 @@
     </div>
 
     <div class="form-group">
+        {!! Form::label('products', 'Referencias de los productos: *') !!}
+        {!! Form::text('products',null,['class'=>'form-control input-lg','required'=>'true']) !!}
+    </div>
+
+    <div class="form-group">
         {!! Form::label('description', 'Descripci&oacute;n:') !!}
         {!! Form::text('description',null,['class'=>'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('products', 'Referencias de los productos: *') !!}
-        {!! Form::text('products',null,['class'=>'form-control input-lg','required'=>'true']) !!}
+        {!! Form::label('photo', 'Foto del manifiesto:') !!}
+        <div class="input-group">
+            <input type="text" value="" class="form-control" readonly="">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        Seleccionar...
+                                        {!! Form::file('photo',['id'=>'photo','accept'=>'image/*']) !!}
+                                    </span>
+                                </span>
+        </div>
     </div>
+
     <br>
     <div class="form-group ">
         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}

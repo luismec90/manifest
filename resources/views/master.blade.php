@@ -17,8 +17,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
-
-
+    <link href="/libs/lightbox2/src/css/lightbox.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
 
     @section('css')
@@ -84,7 +83,6 @@
                         <a href="/entrar">Entrar</a>
                     </li>
                 @endif
-
             </ul>
             <!--//nav-->
         </div>
@@ -127,7 +125,7 @@
 </footer>
 
 <div id="cover-display">
-    <img id="img-loading" src="/img/loading.gif">
+    <img id="img-loading" src="/images/loading.gif">
 </div>
 
 
@@ -135,6 +133,7 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/libs/bootstrap-notify/bootstrap-notify.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script src="/libs/lightbox2/src/js/lightbox.js"></script>
 <script src="/js/main.js"></script>
 
 @section('js')
