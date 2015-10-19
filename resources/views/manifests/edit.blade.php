@@ -74,7 +74,7 @@
     <div class="form-group">
         {!! Form::label('description', 'Descripci&oacute;n:') !!}
         <div>
-            {!! Form::text('description',null,['class'=>'form-control']) !!}
+            {!! Form::text('description',$manifest->description,['class'=>'form-control']) !!}
         </div>
     </div>
 
