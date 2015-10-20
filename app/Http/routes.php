@@ -22,3 +22,4 @@ Route::post('entrar', 'Auth\AuthController@postLogin');
 Route::get('salir', 'Auth\AuthController@getLogout');
 
 Route::post('/api/v1/login', 'APIController@login');
+Route::get('/api/v1/search/{query}', 'APIController@search');
