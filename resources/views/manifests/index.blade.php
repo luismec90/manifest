@@ -114,7 +114,7 @@
                         <div class="custom-token"> {{ $product->reference }} </div>
                     @endforeach
                 </td>
-                <td class="hidden-xs col-xs-1">
+                <td class="col-xs-1">
                     @if($manifest->photos!=[])
                         <ul class="list-unstyled">
                         @foreach($manifest->photos as $index => $photo)
