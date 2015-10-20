@@ -18,10 +18,9 @@ class APIController extends Controller
         $email = $request->get('username');
         $password = $request->get('password');
         if (Auth::attempt(['email' => $email, "password" => $password])) {
-            return ['status' => 'succes',
-                'user' => Auth::user()];
-        }
-        return ['status' => 'error'];
+            echo "success";
+        } else
+            echo "error";
 
     }
 
