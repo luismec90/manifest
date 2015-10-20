@@ -20,3 +20,6 @@ Route::get('/', 'HomeController@index');
 Route::get('entrar', 'Auth\AuthController@getLogin');
 Route::post('entrar', 'Auth\AuthController@postLogin');
 Route::get('salir', 'Auth\AuthController@getLogout');
+
+
+Route::get('/api/v1/login', 'APIController@login');
