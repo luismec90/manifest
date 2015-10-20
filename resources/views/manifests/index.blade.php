@@ -114,9 +114,9 @@
                         <div class="custom-token"> {{ $product->reference }} </div>
                     @endforeach
                 </td>
-                <td class="hidden-xs">
+                <td class="hidden-xs col-xs-1">
                     @if($manifest->photos!=[])
-                        <ul>
+                        <ul class="list-unstyled">
                         @foreach($manifest->photos as $index => $photo)
                        <li>     <a href="{{ $photo->path() }}" target="_blank">
                                 Ver foto {{ $index+1 }}
