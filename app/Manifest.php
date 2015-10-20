@@ -21,6 +21,12 @@ class Manifest extends Model
         return $this->hasMany('App\Product');
     }
 
+    public function photos()
+    {
+        return $this->hasMany('App\Photo');
+    }
+
+
     public function supplier()
     {
         return $this->belongsTo('App\Supplier');
@@ -29,5 +35,15 @@ class Manifest extends Model
     public function brand()
     {
         return $this->belongsTo('App\Brand');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($manifest) {
+            $manifest->products()->delete();
+            $manifest->photos()->delete();
+        });
     }
 }

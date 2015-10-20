@@ -85,15 +85,26 @@
 
 
     <div class="form-group">
-        {!! Form::label('photo', 'Foto del manifiesto:') !!}
+        {!! Form::label('photos', 'Fotos del manifiesto:') !!}
+        @if($manifest->photos!=[])
+            <ul>
+                @foreach($manifest->photos as $index => $photo)
+                    <li>
+                        <a href="{{ $photo->path() }}" target="_blank">
+                            Foto {{ $index+1 }}
+                            <label class="text-danger">
+                                Eliminar <input type="checkbox" name="delete-photos[]" value="{{ $photo->id }}">
+                            </label>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+
         <div class="input-group">
-            <input type="text" value="{{  $manifest->photo }}" class="form-control" readonly="">
-                                <span class="input-group-btn">
-                                    <span class="btn btn-primary btn-file">
-                                        Seleccionar...
-                                        {!! Form::file('photo',['id'=>'photo','accept'=>'image/*']) !!}
-                                    </span>
-                                </span>
+
+            {!! Form::file('photos[]',['accept'=>'image/*','multiple'=>'true']) !!}
+
         </div>
     </div>
 

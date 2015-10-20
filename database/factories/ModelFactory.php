@@ -42,7 +42,6 @@ $factory->define(App\Manifest::class, function (Faker\Generator $faker) {
     return [
         'company_id' => 1,
         'supplier_id' => rand(1, 10),
-        'brand_id' => rand(1, 10),
         'code' => str_random(5),
     ];
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Manifest;
+use App\Photo;
 use App\Product;
 use App\Supplier;
 use Illuminate\Http\Request;
@@ -94,19 +95,35 @@ class ManifestController extends Controller
             $product->save();
         }
 
-        if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
-            $photo = $request->file('photo');
 
-            $path = "companies/" . Auth::user()->company_id;
-            if (!File::exists($path)) {
-                File::makeDirectory($path);
+        foreach ($request->file('photos') as $photoFile) {
+
+            if (!is_null($photoFile) && $photoFile->isValid()) {
+
+                $path = "companies/";
+                if (!File::exists($path))
+                    File::makeDirectory($path);
+
+                $path = "companies/" . Auth::user()->company_id;
+                if (!File::exists($path))
+                    File::makeDirectory($path);
+
+                $path = "companies/" . Auth::user()->company_id . "/$manifest->id";
+                if (!File::exists($path))
+                    File::makeDirectory($path);
+
+
+                $photo = new Photo;
+                $photo->company_id = Auth::user()->company_id;
+                $photo->manifest_id = $manifest->id;
+                $photo->save();
+
+                $photo->name = $photo->id . "." . $photoFile->getClientOriginalExtension();
+                $photo->save();
+
+                Image::make($photoFile->getRealPath())
+                    ->save("$path/$photo->name");
             }
-
-            $filename = $manifest->id . "." . $photo->getClientOriginalExtension();
-            Image::make($photo->getRealPath())
-                ->save("$path/$filename");
-            $manifest->photo = $filename;
-            $manifest->save();
         }
 
         Flash::success('Manifiesto creado exitosamente');
@@ -178,24 +195,42 @@ class ManifestController extends Controller
             $product->save();
         }
 
-        if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
-            $photo = $request->file('photo');
+        if (is_array($request->get('delete-photos')))
+            foreach ($request->get('delete-photos') as $photoID) {
+                $photo = Photo::where('company_id', Auth::user()->company_id)->findOrFail($photoID);
+                $photo->delete();
+            }
 
-            $path = "companies/" . Auth::user()->company_id;
+        foreach ($request->file('photos') as $photoFile) {
 
-            if (!File::exists($path))
-                File::makeDirectory($path);
+            if (!is_null($photoFile) && $photoFile->isValid()) {
 
-            $filename = $manifest->id . "." . $photo->getClientOriginalExtension();
+                $path = "companies/";
+                if (!File::exists($path))
+                    File::makeDirectory($path);
 
-            if (File::isFile($path . "/" . $manifest->photo))
-                File::delete($path . "/" . $manifest->photo);
+                $path = "companies/" . Auth::user()->company_id;
+                if (!File::exists($path))
+                    File::makeDirectory($path);
 
-            Image::make($photo->getRealPath())
-                ->save("$path/$filename");
-            $manifest->photo = $filename;
-            $manifest->save();
+                $path = "companies/" . Auth::user()->company_id . "/$manifest->id";
+                if (!File::exists($path))
+                    File::makeDirectory($path);
+
+
+                $photo = new Photo;
+                $photo->company_id = Auth::user()->company_id;
+                $photo->manifest_id = $manifest->id;
+                $photo->save();
+
+                $photo->name = $photo->id . "." . $photoFile->getClientOriginalExtension();
+                $photo->save();
+
+                Image::make($photoFile->getRealPath())
+                    ->save("$path/$photo->name");
+            }
         }
+
 
         Flash::success('Manifiesto editado exitosamente');
 

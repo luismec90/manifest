@@ -98,7 +98,7 @@
             <th>Provedor</th>
             <th class="hidden-xs">Descripci&oacute;n</th>
             <th class="">Referencias de los productos</th>
-            <th class="">Foto</th>
+            <th class="">Fotos</th>
             <th class="col-xs-1 hidden-xs">Fecha de creaci&oacute;n</th>
             <th class=""></th>
         </tr>
@@ -115,11 +115,15 @@
                     @endforeach
                 </td>
                 <td class="hidden-xs">
-                    @if($manifest->photo!="")
-                    <a href="/companies/{{ Auth::user()->company_id."/".$manifest->photo }}" data-lightbox="image-1">
-                        <img src="/companies/{{ Auth::user()->company_id."/".$manifest->photo }}"
-                             width="100">
-                    </a>
+                    @if($manifest->photos!=[])
+                        <ul>
+                        @foreach($manifest->photos as $index => $photo)
+                       <li>     <a href="{{ $photo->path() }}" target="_blank">
+                                Ver foto {{ $index+1 }}
+                            </a>
+                       </li>
+                        @endforeach
+                        </ul>
                     @endif
                 </td>
                 <td class="hidden-xs">{{  strftime("%Y-%m-%d %l:%M %p", strtotime($manifest->created_at)) }}</td>

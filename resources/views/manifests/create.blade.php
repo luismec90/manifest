@@ -74,15 +74,11 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('photo', 'Foto del manifiesto:') !!}
+        {!! Form::label('photos', 'Fotos del manifiesto:') !!}
         <div class="input-group">
-            <input type="text" value="" class="form-control" readonly="">
-                                <span class="input-group-btn">
-                                    <span class="btn btn-primary btn-file">
-                                        Seleccionar...
-                                        {!! Form::file('photo',['id'=>'photo','accept'=>'image/*']) !!}
-                                    </span>
-                                </span>
+
+            {!! Form::file('photos[]',['accept'=>'image/*','multiple'=>'true']) !!}
+
         </div>
     </div>
 

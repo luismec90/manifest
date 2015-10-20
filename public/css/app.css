@@ -78,14 +78,4 @@ body {
     color: #ffffff;
     font: normal 36px 'Cookie', cursive;
 }
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 155px;
-    height: 34px;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    display: block;
-    cursor: pointer;
-}
+
