@@ -29,7 +29,7 @@ class APIController extends Controller
         $manifests = Manifest::whereHas('products', function ($q) use ($request) {
             $q->where('products.reference', 'like', "%" . trim($request->get('reference')) . "%");
         })->join('suppliers', 'manifests.supplier_id', '=', 'suppliers.id')
-            ->select("manifests.code","suppliers.name","manifests.description")
+            ->select("manifests.code","suppliers.name AS supplier","manifests.description")
             ->get();
 
         return $manifests;
