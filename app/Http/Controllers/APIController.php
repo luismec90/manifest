@@ -24,15 +24,16 @@ class APIController extends Controller
 
     }
 
-    public function search(Request $request)
+    public function search(Request $request, $reference)
     {
-        $manifests = Manifest::whereHas('products', function ($q) use ($request) {
-            $q->where('products.reference', 'like', "%" . trim($request->get('reference')) . "%");
+        $manifests = Manifest::whereHas('products', function ($q) use ($reference) {
+            $q->where('products.reference', 'like', "%" . trim($reference) . "%");
         })->join('suppliers', 'manifests.supplier_id', '=', 'suppliers.id')
-            ->select("manifests.code","suppliers.name AS supplier","manifests.description")
+            ->select("manifests.code", "suppliers.name AS supplier", "manifests.description")
             ->get();
 
-        return ['result'=>$manifests];
+
+        return ['result' => $manifests];
     }
 
 
