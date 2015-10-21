@@ -24,7 +24,7 @@ class APIController extends Controller
 
     }
 
-    public function search(Request $request, $reference)
+    public function search($reference)
     {
         $manifests = Manifest::whereHas('products', function ($q) use ($reference) {
             $q->where('products.reference', 'like', "%" . trim($reference) . "%");
