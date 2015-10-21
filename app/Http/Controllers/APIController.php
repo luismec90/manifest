@@ -32,7 +32,6 @@ class APIController extends Controller
             ->select("manifests.code", "suppliers.name AS supplier", "manifests.description")
             ->get();
 
-
         return ['result' => $manifests];
     }
 
