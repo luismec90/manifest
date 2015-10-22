@@ -12,7 +12,7 @@ class Photo extends Model
 
     public function path()
     {
-        return "/companies/" . \Auth::user()->company_id . "/{$this->manifest_id}/{$this->name}";
+        return "/companies/{$this->company_id}/{$this->manifest_id}/{$this->name}";
 
     }
 }
