@@ -29,8 +29,20 @@ class APIController extends Controller
         $manifests = Manifest::whereHas('products', function ($q) use ($reference) {
             $q->where('products.reference', 'like', "%" . trim($reference) . "%");
         })->join('suppliers', 'manifests.supplier_id', '=', 'suppliers.id')
-            ->select("manifests.code", "suppliers.name AS supplier", "manifests.description")
+            ->select("manifests.id", "manifests.code", "suppliers.name AS supplier", "manifests.description")
             ->get();
+
+        foreach ($manifests as $manifest) {
+
+            $manifest->photo="";
+
+            if ($manifest->photos != []) {
+                foreach ($manifest->photos as $index => $photo) {
+                    $manifest->photo = $photo->path();
+                }
+            }
+            unset($manifest->photos);
+        }
 
         return ['result' => $manifests];
     }
