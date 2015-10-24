@@ -43,10 +43,11 @@ class ManifestController extends Controller
                 $q->where('products.reference', 'like', "%" . trim($request->get('reference')) . "%");
             });
 
-        $suppliers = ['' => 'Provedor'] + Supplier::orderBy('name', 'ASC')
-                ->lists('name', 'id')->all();
-
         $manifests = $manifests->orderBy('id', 'desc')->paginate(15);
+
+        $suppliers = ['' => 'Provedor'] + Supplier::where('company_id', Auth::user()->company_id)
+                ->orderBy('name', 'ASC')
+                ->lists('name', 'id')->all();
 
         return view('manifests.index', compact('manifests', 'suppliers'));
     }
@@ -154,7 +155,7 @@ class ManifestController extends Controller
                 ->lists('name', 'id')->all();
 
         $manifest = Manifest::with('products')
-            ->where('company_id',Auth::user()->company_id)
+            ->where('company_id', Auth::user()->company_id)
             ->findOrFail($manifestID);
 
 
