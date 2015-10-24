@@ -24,25 +24,32 @@ class APIController extends Controller
 
     }
 
-    public function search($reference)
+    public function search($username, $password, $reference)
     {
-        $manifests = Manifest::whereHas('products', function ($q) use ($reference) {
-            $q->where('products.reference', 'like', "%" . trim($reference) . "%");
-        })->join('suppliers', 'manifests.supplier_id', '=', 'suppliers.id')
+        if (!Auth::attempt(['email' => $username, "password" => $password]))
+            return "error";
+
+
+        $manifests = Manifest::with('photos')
+            ->where('manifests.company_id', Auth::user()->company_id)
+            ->whereHas('products', function ($q) use ($reference) {
+                $q->where('products.reference', 'like', "%" . trim($reference) . "%");
+            })->join('suppliers', 'manifests.supplier_id', '=', 'suppliers.id')
             ->select("manifests.id", "manifests.code", "suppliers.name AS supplier", "manifests.description")
             ->get();
 
-        foreach ($manifests as $manifest) {
 
-            $manifest->photo="";
+        /*  foreach ($manifests as $manifest) {
 
-            if ($manifest->photos != []) {
-                foreach ($manifest->photos as $index => $photo) {
-                    $manifest->photo = $photo->path();
-                }
-            }
-            unset($manifest->photos);
-        }
+              $manifest->photo = "";
+
+              if ($manifest->photos != []) {
+                  foreach ($manifest->photos as $index => $photo) {
+                      $manifest->photo = $photo->path();
+                  }
+              }
+              unset($manifest->photos);
+          } */
 
         return ['result' => $manifests];
     }
