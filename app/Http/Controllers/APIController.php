@@ -62,7 +62,7 @@ class APIController extends Controller
         $manifest = Manifest::with('photos')
             ->where('manifests.company_id', Auth::user()->company_id)
             ->join('suppliers', 'manifests.supplier_id', '=', 'suppliers.id')
-            ->select("manifests.id", "manifests.code", "suppliers.name AS supplier", "manifests.description")
+            ->select("manifests.id","manifests.company_id", "manifests.code", "suppliers.name AS supplier", "manifests.description")
             ->find($manifestID);
 
         return ['result' => $manifest];
