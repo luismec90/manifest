@@ -65,7 +65,7 @@ class APIController extends Controller
             ->select("manifests.id", "manifests.code", "suppliers.name AS supplier", "manifests.description")
             ->find($manifestID);
 
-        return $manifest;
+        return ['result' => $manifest];
     }
 
 }
