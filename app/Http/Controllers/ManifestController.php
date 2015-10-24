@@ -20,7 +20,6 @@ use Auth;
 class ManifestController extends Controller
 {
 
-
     /**
      * Display a listing of the resource.
      *
