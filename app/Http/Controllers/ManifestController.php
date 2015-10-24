@@ -28,7 +28,7 @@ class ManifestController extends Controller
      */
     public function index(Request $request)
     {
-        $manifests = Manifest::select();
+        $manifests = Manifest::where('company_id', Auth::user()->company_id);
 
         if ($request->has('code'))
             $manifests->where('code', 'like', "%" . trim($request->get('code')) . "%");
@@ -59,7 +59,8 @@ class ManifestController extends Controller
      */
     public function create()
     {
-        $suppliers = ['' => ''] + Supplier::orderBy('name', 'ASC')
+        $suppliers = ['' => ''] + Supplier::where('company_id', Auth::user()->company_id)
+                ->orderBy('name', 'ASC')
                 ->lists('name', 'id')->all();
 
         return view('manifests.create', compact('suppliers'));
@@ -154,6 +155,7 @@ class ManifestController extends Controller
                 ->lists('name', 'id')->all();
 
         $manifest = Manifest::with('products')
+            ->where('company_id',Auth::user()->company_id)
             ->findOrFail($manifestID);
 
 
