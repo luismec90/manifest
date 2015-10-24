@@ -27,7 +27,7 @@ class SupplierController extends Controller
      */
     public function index(Request $request)
     {
-        $suppliers = Supplier::select();
+        $suppliers = Supplier::where('company_id', Auth::user()->company_id);
 
         if ($request->has('name'))
             $suppliers->where('name', 'like', "%" . trim($request->get('name')) . "%");
@@ -102,7 +102,8 @@ class SupplierController extends Controller
      */
     public function edit($supplierID)
     {
-        $supplier = Supplier::findOrFail($supplierID);
+        $supplier = Supplier::where('company_id', Auth::user()->company_id)
+            ->findOrFail($supplierID);
 
 
         return view('suppliers.edit', compact('supplier'));
