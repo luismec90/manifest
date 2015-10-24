@@ -25,4 +25,5 @@ Route::get('salir', 'Auth\AuthController@getLogout');
 Route::group(['prefix' => 'api/v1'], function () {
     Route::post('login', 'APIController@login');
     Route::get('{username}/{password}/search/{query}', 'APIController@search');
+    Route::get('{username}/{password}/manifests/{manifestID}', 'APIController@showManifest');
 });

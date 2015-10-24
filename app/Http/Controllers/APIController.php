@@ -55,4 +55,17 @@ class APIController extends Controller
     }
 
 
+    function showManifest($username, $password, $manifestID){
+        if (!Auth::attempt(['email' => $username, "password" => $password]))
+            return "error";
+
+        $manifest = Manifest::with('photos')
+            ->where('manifests.company_id', Auth::user()->company_id)
+            ->join('suppliers', 'manifests.supplier_id', '=', 'suppliers.id')
+            ->select("manifests.id", "manifests.code", "suppliers.name AS supplier", "manifests.description")
+            ->find($manifestID);
+
+        return $manifest;
+    }
+
 }
